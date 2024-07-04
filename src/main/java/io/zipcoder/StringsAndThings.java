@@ -1,6 +1,8 @@
 package io.zipcoder;
 
 
+import java.util.ArrayList;
+
 /**
  * @author tariq
  */
@@ -15,7 +17,16 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        Integer counter = 0;
+        String[] words = input.split(" ");
+        for (String word : words){
+            if (word.charAt(word.length() - 1) == 'y'){
+                counter++;
+            } else if (word.charAt(word.length() - 1) == 'z'){
+                counter++;
+            }
+        }
+        return counter;
     }
 
     /**
@@ -28,7 +39,14 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        StringBuilder sb = new StringBuilder();
+
+        String[] arr = base.split(remove);
+        for (String i : arr){
+            sb.append(i);
+        }
+        String result = sb.toString();
+        return result;
     }
 
     /**
@@ -40,7 +58,19 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        //take a string
+        //make 2 counters, one to track IS one to track NOT
+        int counterIs = 0;
+        int counterNot = 0;
+        char[] chArr = input.toCharArray();
+        for (int i = 0; i < chArr.length - 1; i++){
+            if (chArr[i] == 'i' && chArr[i + 1] == 's'){
+                counterIs++;
+            } else if (chArr[i] == 'n' && chArr[i+1] == 'o' && chArr[i+2] == 't'){
+                counterNot++;
+            }
+        }
+        return (counterIs == counterNot);
     }
 
     /**
@@ -51,7 +81,21 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+        char[] charArr = input.toCharArray();
+        boolean result = false;
+
+        for (int i = 0; i < charArr.length; i++){
+            if (charArr[i] == 'g' && charArr[i + 1] == 'g'){
+                result = true;
+            } else if (charArr[i] == 'g' && charArr[i - 1] == 'g'){
+                result = true;
+            } else if (charArr[i] == 'g'){
+                result = false;
+            }
+
+        }
+        return result;
+
     }
 
 
@@ -63,6 +107,15 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        char[] chArr = input.toCharArray();
+        Integer counter = 0;
+
+        for (int i = 0; i < input.length() - 2; i++){
+            if (chArr[i] == chArr[i + 1] && chArr[i] == chArr[i + 2]){
+                counter++;
+            }
+        }
+
+        return counter;
     }
 }
